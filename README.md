@@ -1,22 +1,22 @@
-# deploybot - Slack messages for AWS CodeDeploy deployments
+## Slack messages for AWS CodeDeploy deployments
 
 Sends and updates slack messages with detailed status for recent and active deployments.
 
 _This has only been tested with deployments to EC2 instance targets._
 
-## Required environment variables
+### Required environment variables
 
  - `AWS_REGION` - e.g., "us-east-2"
- - `SLACK_BOT_TOKEN` - Must be a bot token with chat:write, chat:write.customize, and optionally chat:write.public OAuth scopes.
+ - `SLACK_BOT_TOKEN` - Slack bot token with chat:write, chat:write.customize, and chat:write.public scopes.
  - `SLACK_CHANNEL` - Where to send the messages.
 
-## Running locally
+### Running locally
 
 ```shell
 AWS_REGION="us-east-2" SLACK_BOT_TOKEN="xoxb-asdf0978" SLACK_CHANNEL="#deployments" ./run.py
 ```
 
-## Running in docker
+### Running in docker
 
 ```shell
 docker build -t deploybot .
@@ -31,12 +31,16 @@ docker build -t deploybot .
 docker run -d deploybot:latest
 ```
 
-## Required AWS permissions
+### Required AWS permissions
 
 codedeploy:GetDeployment
+
 codedeploy:ListDeployments
+
 codedeploy:BatchGetDeploymentTargets
+
 codedeploy:ListDeploymentTargets
+
 
 Example policy:
 
@@ -66,6 +70,6 @@ Example policy:
 }
 ```
 
-## Misc
+### Misc
 
 The `Deployment` class uses the `:code_deploy:` emoji for an icon. This can be added to Slack using codedeploy.png (included in this repo).
