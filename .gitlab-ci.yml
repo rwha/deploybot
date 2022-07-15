@@ -1,5 +1,5 @@
 stages:
-  - deploy
+  - build
 
 workflow:
   rules:
@@ -7,8 +7,8 @@ workflow:
       when: always
     - when: never
 
-build and run:
-  stage: deploy
+build and push:
+  stage: build
   variables:
     IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   script:
